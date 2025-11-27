@@ -1,45 +1,95 @@
 /* -----------------------------------------------------------
-   GLOBAL VARIABLES & SETTINGS (LO4: Maintainability)
+   GLOBAL VARIABLES & SETTINGS
    Theme: Calming Nature (Sage Green & Slate)
 ----------------------------------------------------------- */
 :root {
-    --primary-color: #4A7C59; /* Sage Green */
-    --secondary-color: #355070; /* Slate Blue */
-    --accent-color: #E6F4F1;    /* Very Light Mint */
+    /* Base Primitives */
+    --base-primary: #4A7C59; /* Sage Green */
+    --base-secondary: #355070; /* Slate Blue */
+    --base-urgent: #d9534f;
+    
+    /* Dynamic Theming */
+    --primary-color: var(--base-primary);
+    --primary-hover: color-mix(in srgb, var(--base-primary), black 10%);
+    --primary-subtle: color-mix(in srgb, var(--base-primary), white 90%);
+    
+    --secondary-color: var(--base-secondary);
+    --urgent-color: var(--base-urgent);
+    
+    /* Text */
     --text-dark: #2C3E50;
     --text-light: #ffffff;
+    
+    /* Typography & Layout */
     --font-heading: 'Open Sans', sans-serif;
     --font-body: 'Lato', sans-serif;
+    --navbar-height: 76px;
+    
+    /* Light Mode Defaults */
+    --bg-body: #ffffff;
+    --bg-card: #ffffff;
+    --bg-section-alt: var(--primary-subtle);
+    --text-main: #2C3E50;
+    --text-muted: #6c757d;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.3);
 }
 
-/* Smooth Scrolling (Cheap UX Win) */
-html {
-    scroll-behavior: smooth;
+/* Dark Mode Overrides */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: color-mix(in srgb, var(--base-primary), white 20%);
+        --primary-hover: color-mix(in srgb, var(--base-primary), white 30%);
+        --primary-subtle: color-mix(in srgb, var(--base-primary), black 80%);
+        
+        --secondary-color: #a4b6cf;
+        --urgent-color: #ff6b6b;
+        
+        --bg-body: #121212;
+        --bg-card: #1e1e1e;
+        --bg-section-alt: #181818;
+        --text-main: #e0e0e0;
+        --text-muted: #b0b0b0;
+        --glass-bg: rgba(30, 30, 30, 0.85);
+        --glass-border: rgba(255, 255, 255, 0.1);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+section {
+    scroll-margin-top: var(--navbar-height);
 }
 
 body {
     font-family: var(--font-body);
-    color: var(--text-dark);
+    color: var(--text-main);
+    background-color: var(--bg-body);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5 {
     font-family: var(--font-heading);
     font-weight: 700;
+    color: var(--text-main);
 }
 
 /* -----------------------------------------------------------
-   ACCESSIBILITY UTILITIES (LO1: Accessibility)
+   ACCESSIBILITY & UTILITIES
 ----------------------------------------------------------- */
-/* Skip Link: Hidden until focused with Tab key */
 .skip-link {
     position: absolute;
     top: -40px;
     left: 0;
     background: var(--primary-color);
-    color: white;
+    color: var(--bg-body);
     padding: 8px;
-    z-index: 1000;
+    z-index: 2000;
     transition: top 0.3s;
 }
 
@@ -47,33 +97,241 @@ h1, h2, h3, h4, h5 {
     top: 0;
 }
 
-/* Ensure focus visibility for keyboard navigation */
 :focus {
     outline: 3px solid var(--secondary-color);
     outline-offset: 2px;
 }
 
+/* Quick Exit Button */
+.quick-exit-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    background-color: var(--urgent-color);
+    color: white;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background-color 0.2s;
+    text-decoration: none;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.quick-exit-btn:hover {
+    background-color: color-mix(in srgb, var(--urgent-color), black 10%);
+    transform: scale(1.05);
+    color: white;
+}
+
+/* 
+   Improvement #2 Refinement: Explicit Crisis Button
+   Changed from round icon-only to pill shape with text label.
+   Background is now Friendly Green (Primary) instead of Slate.
+*/
+.crisis-fab {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1050;
+    background-color: var(--primary-color); /* Friendly Green */
+    color: white;
+    
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between icon and text */
+    
+    /* Sizing */
+    padding: 12px 24px;
+    width: auto;
+    height: auto;
+    border-radius: 50px; /* Pill Shape */
+    
+    /* Visuals */
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    text-decoration: none;
+    border: 2px solid white;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.crisis-fab:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px); /* Slight lift */
+    color: white;
+}
+
+.crisis-fab:focus {
+    outline: 3px solid var(--urgent-color);
+}
+
 /* -----------------------------------------------------------
-   CUSTOM CLASSES
+   CONTAINER QUERIES
 ----------------------------------------------------------- */
-.text-primary-custom {
-    color: var(--primary-color) !important;
+.responsive-card-wrapper {
+    container-type: inline-size;
+    container-name: card-wrapper;
+    height: 100%;
 }
 
-.bg-primary-custom {
-    background-color: var(--primary-color) !important;
+@container card-wrapper (max-width: 350px) {
+    .card-custom .card-body {
+        padding: 1rem !important;
+    }
+    
+    .card-custom h3 {
+        font-size: 1.1rem;
+    }
+    
+    .card-custom .icon-wrapper i {
+        font-size: 2em;
+    }
 }
 
-.bg-light-custom {
-    background-color: var(--accent-color) !important;
+/* -----------------------------------------------------------
+   THEME CLASSES
+----------------------------------------------------------- */
+.text-primary-custom { color: var(--primary-color) !important; }
+.bg-primary-custom { background-color: var(--primary-color) !important; }
+.bg-light-custom { background-color: var(--bg-section-alt) !important; }
+
+.card-custom {
+    background-color: var(--bg-card) !important;
+    color: var(--text-main);
+}
+
+.text-muted-custom {
+    color: var(--text-muted) !important;
+}
+
+/* Glassmorphism */
+.glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-dark-effect {
+    background-color: rgba(44, 62, 80, 0.75); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* -----------------------------------------------------------
+   HERO & COMPONENTS
+----------------------------------------------------------- */
+.hero-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #000; 
+}
+
+.hero-img {
+    object-fit: cover;
+    min-height: 500px; 
+    opacity: 0.9;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .fade-in-up { animation: fadeUp 1s ease-out forwards; }
+    .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    .transition-icon { transition: transform 0.3s ease; }
+}
+
+details > summary {
+    list-style: none;
+    cursor: pointer;
+}
+summary::-webkit-details-marker { display: none; }
+
+details[open] summary .transition-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+}
+
+details[open] .accordion-content {
+    grid-template-rows: 1fr;
+}
+
+.accordion-content > div {
+    overflow: hidden;
 }
 
 .btn-outline-primary-custom {
     color: var(--primary-color);
     border-color: var(--primary-color);
 }
-
 .btn-outline-primary-custom:hover {
     background-color: var(--primary-color);
-    color: var(--text-light);
+    color: #fff;
+}
+
+.btn-primary-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+.btn-primary-custom:hover {
+    background-color: var(--primary-hover);
+    color: white;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: var(--primary-color);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    background-size: 60%;
+}
+
+@media print {
+    header, footer, .quick-exit-btn, .crisis-fab, .hero-image-wrapper {
+        display: none !important;
+    }
+    body, section, .card, .bg-light-custom {
+        background-color: white !important;
+        color: black !important;
+    }
+    p, h1, h2, h3, h4, h5 {
+        color: black !important;
+    }
+    details .accordion-content {
+        grid-template-rows: 1fr !important;
+        display: block !important;
+    }
+    .accordion-content > div {
+        overflow: visible !important;
+    }
+    @page { margin: 2cm; }
 }
