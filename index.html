@@ -7,10 +7,6 @@
     <meta name="author" content="MindSpace Team">
     <title>Mental Health Awareness | You Are Not Alone</title>
 
-    <link rel="preload" href="./assets/img/landscape-1.jpg" as="image">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@600;800&display=swap" as="style">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@600;800&display=swap" rel="stylesheet">
@@ -27,18 +23,15 @@
 </head>
 <body>
 
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link rounded-bottom">Skip to main content</a>
 
-    <!-- History-Safe Quick Exit -->
-    <button onclick="safeExit()" class="quick-exit-btn" aria-label="Quick Exit to Google immediately">
+    <!-- Safety: History-safe Exit -->
+    <a href="https://www.google.com" id="btn-quick-exit" class="fab-btn" aria-label="Quick Exit to Google immediately">
         <i class="fa-solid fa-person-running"></i> Quick Exit
-    </button>
+    </a>
 
-    <!-- 
-       Refined Improvement #2: Crisis FAB 
-       Now includes explicit text "Get Support" for clarity.
-    -->
-    <a href="#resources" class="crisis-fab" aria-label="Get Help Now">
+    <!-- Crisis Button -->
+    <a href="#resources" class="crisis-fab fab-btn" aria-label="Scroll to Support Resources">
         <i class="fa-solid fa-life-ring fa-lg"></i>
         <span>Get Support</span>
     </a>
@@ -46,18 +39,19 @@
     <header>
         <nav class="navbar navbar-expand-lg sticky-top shadow-sm glass-effect">
             <div class="container">
-                <a class="navbar-brand fw-bold text-primary-custom" href="#">
+                <a class="navbar-brand fw-bold text-primary" href="#">
                     <i class="fa-solid fa-seedling"></i> MindSpace
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="fa-solid fa-bars text-primary-custom"></span>
+                    <span class="fa-solid fa-bars text-primary"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signs">Signs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#reminders">Reminders</a></li>
                         <li class="nav-item"><a class="nav-link" href="#strategies">Strategies</a></li>
-                        <li class="nav-item"><a class="nav-link btn btn-outline-primary-custom ms-2" href="#resources">Get Help</a></li>
+                        <li class="nav-item"><a class="nav-link btn btn-outline-primary ms-2 px-3" href="#resources">Get Help</a></li>
                     </ul>
                 </div>
             </div>
@@ -66,156 +60,292 @@
 
     <main id="main-content">
         
-        <section id="hero" class="position-relative text-white mb-5">
-            <div class="hero-image-wrapper">
-                <picture>
-                    <source media="(max-width: 768px)" srcset="./assets/img/portrait-2.jpg">
-                    <img src="./assets/img/landscape-1.jpg" 
-                         alt="a calming green forest landscape representing peace of mind" 
-                         class="img-fluid w-100 hero-img">
-                </picture>
-                <div class="hero-overlay d-flex align-items-center justify-content-center">
-                    <div class="text-center p-5 rounded shadow-lg glass-dark-effect fade-in-up mx-3">
-                        <h1 class="display-4 fw-bold">you are not alone</h1>
-                        <p class="lead mb-4">understanding mental health starts with a single step.</p>
-                        <a href="#resources" class="btn btn-light btn-lg fw-bold text-primary-custom">find support</a>
+        <section id="hero" class="position-relative text-white mb-1">
+            <div class="hero-wrapper">
+                <div class="hero-overlay-gradient"></div>
+
+                <h2 class="hero-title">
+                        Mental Health Matters
+                </h2>
+
+                <div class="hero-orb-grid">
+                    <div class="hero-orb-cluster d-none d-lg-flex">
+                        <div class="hero-circle layer-1"></div>
+                        <div class="hero-circle layer-2"></div>
+                        <div class="hero-circle layer-3"></div>
+                    </div>
+                    <div class="hero-orb-cluster">
+                        <div class="hero-circle layer-1"></div>
+                        <div class="hero-circle layer-2"></div>
+                        <div class="hero-circle layer-3"></div>
+                    </div>
+                   <div class="hero-orb-cluster d-none d-lg-flex">
+                        <div class="hero-circle layer-1"></div>
+                        <div class="hero-circle layer-2"></div>
+                        <div class="hero-circle layer-3"></div>
+                    </div>
+                    <div class="hero-orb-cluster d-none d-lg-flex">
+                        <div class="hero-circle layer-1"></div>
+                        <div class="hero-circle layer-2"></div>
+                        <div class="hero-circle layer-3"></div>
+                    </div>
+                     <div class="hero-orb-cluster d-none d-lg-flex">
+                        <div class="hero-circle layer-1"></div>
+                        <div class="hero-circle layer-2"></div>
+                        <div class="hero-circle layer-3"></div>
                     </div>
                 </div>
+
+                <div class="hero-breathing-text"></div>
+
+                <div class="glass-hero-card p-3 rounded shadow-lg d-flex gap-3 align-items-center text-white">
+                    <div>
+                        <h1 class="h4 fw-bold mb-1">You are not alone</h1>
+                        <p class="mb-0 small">Take a moment to breathe with the circles.</p>
+                    </div>
+                    <div class="d-flex flex-column gap-2 flex-shrink-0">
+                        <a href="#resources" class="btn btn-light btn-sm fw-bold text-primary">Find Support</a>
+                        <a href="#signs" class="btn btn-outline-light btn-sm">Check Signs</a>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <section id="signs" class="py-5 bg-light-custom">
+
+        <section id="signs" class="py-3 bg-body-tertiary">
             <div class="container">
                 <div class="text-center mb-5">
-                    <h2 class="section-title">Recognizing the Signs</h2>
-                    <p class="section-subtitle w-75 mx-auto">Stress manifests differently for everyone. Here are common indicators to look out for.</p>
+                    <div class="w-100">
+                        <h2 class="section-title mb-0 d-inline-block">
+                            <a href="#" class="section-header-link" title="Click to view all signs">
+                                Recognizing the Signs <i class="fa-solid fa-angle-right ms-2"></i>
+                            </a>
+                        </h2>
+                        <h4 class="w-75 mx-auto mt-2 fw-normal fs-6 text-muted">Learn to notice it early. Pause. Regain control.</h4>
+                    </div>
                 </div>
                 
-                <div class="row g-4">
-                    <div class="col-md-4 responsive-card-wrapper">
-                        <article class="card h-100 shadow-sm border-0 hover-lift card-custom">
-                            <div class="card-body text-center p-4">
-                                <div class="icon-wrapper mb-3 text-primary-custom">
+                <ul class="row g-4 list-unstyled p-0 m-0">
+                    <li class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0 hover-lift text-center">
+                            <div class="card-body p-4 p-md-5">
+                                <div class="mb-3 text-primary transition-icon">
                                     <i class="fa-solid fa-heart-pulse fa-3x"></i>
                                 </div>
-                                <h3 class="card-title h4">Physical</h3>
-                                <p class="card-text text-muted-custom">Headaches, muscle tension, fatigue, or changes in sleep patterns.</p>
+                                <h3 class="card-title h4 d-block fw-bold text-body">
+                                    <a href="/symptoms/physical" class="text-decoration-none text-reset stretched-link">Physical</a>
+                                </h3>
+                                <span class="card-text d-block text-muted">Headaches, muscle tension, fatigue, or changes in sleep patterns.</span>
                             </div>
-                        </article>
-                    </div>
-                    <div class="col-md-4 responsive-card-wrapper">
-                        <article class="card h-100 shadow-sm border-0 hover-lift card-custom">
-                            <div class="card-body text-center p-4">
-                                <div class="icon-wrapper mb-3 text-primary-custom">
+                        </div>
+                    </li>
+
+                    <li class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0 hover-lift text-center">
+                            <div class="card-body p-4 p-md-5">
+                                <div class="mb-3 text-primary transition-icon">
                                     <i class="fa-solid fa-cloud-rain fa-3x"></i>
                                 </div>
-                                <h3 class="card-title h4">Emotional</h3>
-                                <p class="card-text text-muted-custom">Feeling overwhelmed, irritable, anxious, or lacking motivation.</p>
+                                <h3 class="card-title h4 d-block fw-bold text-body">
+                                    <a href="/symptoms/emotional" class="text-decoration-none text-reset stretched-link">Emotional</a>
+                                </h3>
+                                <span class="card-text d-block text-muted">Feeling overwhelmed, irritable, anxious, or lacking motivation.</span>
                             </div>
-                        </article>
-                    </div>
-                    <div class="col-md-4 responsive-card-wrapper">
-                        <article class="card h-100 shadow-sm border-0 hover-lift card-custom">
-                            <div class="card-body text-center p-4">
-                                <div class="icon-wrapper mb-3 text-primary-custom">
-                                    <i class="fa-solid fa-person-walking-arrow-right fa-3x"></i>
+                        </div>
+                    </li>
+
+                    <li class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0 hover-lift text-center">
+                            <div class="card-body p-4 p-md-5">
+                                <div class="mb-3 text-primary transition-icon">
+                                    <i class="fa-solid fa-user-clock fa-3x"></i>
                                 </div>
-                                <h3 class="card-title h4">Behavioral</h3>
-                                <p class="card-text text-muted-custom">Withdrawing from friends, changes in appetite, or difficulty concentrating.</p>
+                                <h3 class="card-title h4 d-block fw-bold text-body">
+                                    <a href="/symptoms/behavioral" class="text-decoration-none text-reset stretched-link">Behavioral</a>
+                                </h3>
+                                <span class="card-text d-block text-muted">Withdrawing from friends, changes in appetite, or difficulty concentrating.</span>
                             </div>
-                        </article>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="reminders" class="py-5">
+            <div class="container">
+                <div class="row gx-5">
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                            <h2 class="text-primary mb-0 d-inline-block">
+                                <a href="#" class="section-header-link" title="See more reminders">
+                                    Daily Reminders <i class="fa-solid fa-angle-right ms-2"></i>
+                                </a>
+                            </h2>
+                            <p class="text-muted mt-2">Tap to read common truths we often forget.</p>
+                        </div>
+                        
+                        <ul class="list-unstyled d-flex flex-column gap-3">
+                            <li>
+                                <details class="shadow-sm rounded">
+                                    <summary class="p-3 fw-bold d-flex justify-content-between align-items-center rounded">
+                                        <span><i class="fa-regular fa-sun me-2 text-warning"></i> Growth isn't linear</span>
+                                        <i class="fa-solid fa-chevron-down transition-icon"></i>
+                                    </summary>
+                                    <div class="details-content rounded-bottom">
+                                        <p class="mb-0">Some days you will feel like you are moving backward. That is part of the journey. Be patient with your progress.</p>
+                                    </div>
+                                </details>
+                            </li>
+
+                            <li>
+                                <details class="shadow-sm rounded">
+                                    <summary class="p-3 fw-bold d-flex justify-content-between align-items-center rounded">
+                                        <span><i class="fa-regular fa-clock me-2 text-info"></i> This feeling will pass</span>
+                                        <i class="fa-solid fa-chevron-down transition-icon"></i>
+                                    </summary>
+                                    <div class="details-content rounded-bottom">
+                                        <p class="mb-0">Emotions are temporary guests. They visit, they stay for a while, and then they leave. You have survived 100% of your bad days so far.</p>
+                                    </div>
+                                </details>
+                            </li>
+
+                            <li>
+                                <details class="shadow-sm rounded">
+                                    <summary class="p-3 fw-bold d-flex justify-content-between align-items-center rounded">
+                                        <span><i class="fa-solid fa-battery-quarter me-2 text-danger"></i> Rest is productive</span>
+                                        <i class="fa-solid fa-chevron-down transition-icon"></i>
+                                    </summary>
+                                    <div class="details-content rounded-bottom">
+                                        <p class="mb-0">You cannot pour from an empty cup. Taking time to recharge is not "lazy," it's essential maintenance for your brain.</p>
+                                    </div>
+                                </details>
+                            </li>
+
+                            <li>
+                                <details class="shadow-sm rounded">
+                                    <summary class="p-3 fw-bold d-flex justify-content-between align-items-center rounded">
+                                        <span><i class="fa-solid fa-sliders me-2 text-primary"></i> Focus on control</span>
+                                        <i class="fa-solid fa-chevron-down transition-icon"></i>
+                                    </summary>
+                                    <div class="details-content rounded-bottom">
+                                        <p class="mb-0">You cannot control everything that happens to you, but you can control how you respond to it.</p>
+                                    </div>
+                                </details>
+                            </li>
+                        </ul>
                     </div>
+
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <div class="sticky-top" style="top: 100px; z-index: 1;">
+
+                            <picture>
+                                <source media="(min-width: 992px)" 
+                                        srcset="assets/img/landscape-2-lg.webp" 
+                                        type="image/webp">
+                                <source media="(min-width: 768px)" 
+                                        srcset="assets/img/landscape-2-md.webp" 
+                                        type="image/webp">
+                                <source srcset="assets/img/landscape-2-sm.webp" 
+                                        type="image/webp">
+                                
+                                <img src="assets/img/landscape-2-sm.jpg" 
+                                     alt="A peaceful landscape representing clarity and calm" 
+                                     class="img-fluid rounded shadow-lg w-100" 
+                                     width="800" height="600"
+                                     loading="lazy" 
+                                     style="object-fit: cover; min-height: 400px; max-height: 80vh; aspect-ratio: 4/3;">
+                            </picture>
+
+                            <div class="p-4 bg-primary text-white mt-4 rounded shadow">
+                                <p class="mb-0 fw-bold"><i class="fa-solid fa-quote-left me-2"></i>Healing is not an overnight process, it is a daily commitment to yourself.<i class="fa-solid fa-quote-right ms-2"></i></p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <section id="affirmations" class="py-5 card-custom">
-            <div class="container text-center">
-                <h2 class="text-primary-custom mb-4">Daily Reminders</h2>
-                <div id="affirmationCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <blockquote class="blockquote">
-                                <p class="h3 fst-italic py-4">"You don’t have to control your thoughts. You just have to stop letting them control you."</p>
-                                <footer class="blockquote-footer">Dan Millman</footer>
-                            </blockquote>
-                        </div>
-                        <div class="carousel-item">
-                            <blockquote class="blockquote">
-                                <p class="h3 fst-italic py-4">"Your present circumstances don't determine where you can go; they merely determine where you start."</p>
-                                <footer class="blockquote-footer">Nido Qubein</footer>
-                            </blockquote>
-                        </div>
-                        <div class="carousel-item">
-                            <blockquote class="blockquote">
-                                <p class="h3 fst-italic py-4">"It’s okay to not be okay as long as you are not giving up."</p>
-                                <footer class="blockquote-footer">Karen Salmansohn</footer>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#affirmationCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#affirmationCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="strategies" class="py-5 bg-light-custom">
+        <section id="strategies" class="py-5 bg-body-tertiary">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-5 mb-4 mb-lg-0">
-                        <img src="assets/img/portrait-1.jpg" 
-                             alt="Illustration of a person meditating" 
-                             class="img-fluid rounded shadow w-100">
+                        
+                        <picture>
+                            <source media="(min-width: 992px)" 
+                                    srcset="assets/img/portrait-1-lg.webp" 
+                                    type="image/webp">
+                            <source media="(min-width: 768px)" 
+                                    srcset="assets/img/portrait-1-md.webp" 
+                                    type="image/webp">
+                            <source srcset="assets/img/portrait-1-sm.webp" 
+                                    type="image/webp">
+
+                            <img src="assets/img/portrait-1-sm.jpg" 
+                                 alt="Illustration of a person meditating in a calm environment" 
+                                 class="img-fluid rounded shadow w-100"
+                                 width="600" height="800"
+                                 loading="lazy"
+                                 style="aspect-ratio: 3/4; object-fit: cover;">
+                        </picture>
+
                     </div>
                     <div class="col-lg-7">
-                        <h2 class="mb-4 text-primary-custom">Coping Strategies</h2>
-                        <p class="mb-4">Small changes can make a big difference. Click below to explore simple techniques.</p>
-                        
-                        <div class="strategies-wrapper">
-                            
-                            <details class="custom-details mb-3 shadow-sm rounded">
-                                <summary class="p-3 fw-bold card-custom rounded d-flex justify-content-between align-items-center cursor-pointer">
-                                    <span><i class="fa-solid fa-lungs me-2 text-primary-custom"></i> Deep Breathing</span>
-                                    <i class="fa-solid fa-chevron-down transition-icon"></i>
-                                </summary>
-                                <div class="accordion-content">
-                                    <div class="p-3 card-custom text-dark-custom border-top">
-                                        <p class="mb-0">Try the 4-7-8 technique: Inhale for 4 seconds, hold for 7, and exhale slowly for 8. This resets your nervous system.</p>
-                                    </div>
-                                </div>
-                            </details>
+                        <h2 class="text-primary mb-0 d-inline-block">
+                            <a href="#" class="section-header-link mb-3" title="View all strategies">
+                                Coping Strategies <i class="fa-solid fa-angle-right ms-2"></i>
+                            </a>
+                        </h2>
 
-                            <details class="custom-details mb-3 shadow-sm rounded">
-                                <summary class="p-3 fw-bold card-custom rounded d-flex justify-content-between align-items-center cursor-pointer">
-                                    <span><i class="fa-solid fa-shoe-prints me-2 text-primary-custom"></i> Grounding Techniques</span>
-                                    <i class="fa-solid fa-chevron-down transition-icon"></i>
-                                </summary>
-                                <div class="accordion-content">
-                                    <div class="p-3 card-custom text-dark-custom border-top">
+                        <p class="mb-4 mt-2">Small changes can make a big difference.</p>
+                        
+                        <ul class="list-unstyled d-flex flex-column gap-3">
+                            
+                            <li>
+                                <details class="shadow-sm rounded">
+                                    <summary class="p-3 fw-bold d-flex justify-content-between align-items-center rounded">
+                                        <span><i class="fa-solid fa-lungs me-2 text-primary"></i> Deep Breathing (4-7-8)</span>
+                                        <i class="fa-solid fa-chevron-down transition-icon"></i>
+                                    </summary>
+                                    <div class="details-content rounded-bottom">
+                                        <p class="mb-3">Technique: <strong>Inhale</strong> through your nose for 4 seconds, <strong>Hold</strong> your breath for 7 seconds, and <strong>Exhale</strong> slowly through your mouth for 8 seconds. Follow the visual guide below.</p>
+                                        
+                                        <div class="d-flex justify-content-center align-items-center py-4 bg-body-tertiary rounded" aria-hidden="true">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <div class="breathing-circle"></div>
+                                                <div class="breathing-text fw-bold text-primary mt-2 text-center">Inhale...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </details>
+                            </li>
+
+                            <li>
+                                <details class="shadow-sm rounded">
+                                    <summary class="p-3 fw-bold d-flex justify-content-between align-items-center rounded">
+                                        <span><i class="fa-solid fa-shoe-prints me-2 text-primary"></i> Grounding Techniques</span>
+                                        <i class="fa-solid fa-chevron-down transition-icon"></i>
+                                    </summary>
+                                    <div class="details-content rounded-bottom">
                                         <p class="mb-0">Look around and name: 5 things you see, 4 you feel, 3 you hear, 2 you smell, and 1 you taste.</p>
                                     </div>
-                                </div>
-                            </details>
+                                </details>
+                            </li>
                             
-                            <details class="custom-details shadow-sm rounded">
-                                <summary class="p-3 fw-bold card-custom rounded d-flex justify-content-between align-items-center cursor-pointer">
-                                    <span><i class="fa-solid fa-pen-nib me-2 text-primary-custom"></i> Journaling</span>
-                                    <i class="fa-solid fa-chevron-down transition-icon"></i>
-                                </summary>
-                                <div class="accordion-content">
-                                    <div class="p-3 card-custom text-dark-custom border-top">
+                            <li>
+                                <details class="shadow-sm rounded">
+                                    <summary class="p-3 fw-bold d-flex justify-content-between align-items-center rounded">
+                                        <span><i class="fa-solid fa-pen-nib me-2 text-primary"></i> Journaling</span>
+                                        <i class="fa-solid fa-chevron-down transition-icon"></i>
+                                    </summary>
+                                    <div class="details-content rounded-bottom">
                                         <p class="mb-0">Writing down your thoughts can help clarify feelings and reduce the intensity of emotions.</p>
                                     </div>
-                                </div>
-                            </details>
+                                </details>
+                            </li>
 
-                        </div>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -225,13 +355,13 @@
             <div class="container">
                 <div class="text-center mb-5">
                     <h2 class="section-title fw-bold">Support Resources</h2>
-                    <p class="text-muted-custom">If you or someone you know is struggling, help is available.</p>
+                    <p class="text-muted">If you or someone you know is struggling, help is available.</p>
                 </div>
 
                 <div class="row g-4">
                     <!-- Urgent Help -->
                     <div class="col-md-6">
-                        <div class="p-4 border border-2 rounded h-100 shadow-sm card-custom">
+                        <div class="p-4 border border-2 rounded h-100 shadow-sm card">
                             <h3 class="h4 text-danger"><i class="fa-solid fa-phone me-2"></i>Immediate Crisis</h3>
                             <p>If you are in danger, please call emergency services immediately.</p>
                             <ul class="list-unstyled mt-3">
@@ -239,18 +369,20 @@
                                 <li class="mb-2"><strong>Samaritans:</strong> 116 123 (Free, 24/7)</li>
                                 <li class="mb-2"><strong>Text SHOUT:</strong> 85258</li>
                             </ul>
-                            <a href="tel:116123" class="btn btn-outline-danger w-100 mt-2">Call Samaritans</a>
+                            <a href="tel:999" class="btn btn-outline-danger w-100 mt-2"><i class="fa-solid fa-phone me-2"></i>Call Emergency</a>
                         </div>
                     </div>
 
                     <!-- Professional Support -->
                     <div class="col-md-6">
-                        <div class="p-4 bg-light-custom rounded h-100 shadow-sm border border-success border-opacity-25 card-custom">
-                            <h3 class="h4 text-primary-custom"><i class="fa-solid fa-user-doctor me-2"></i>Professional Help</h3>
-                            <p>Find a therapist or local support group to help you navigate your mental health journey.</p>
-                            <div class="d-grid gap-2 mt-4">
-                                <a href="https://www.mind.org.uk/" target="_blank" class="btn btn-primary-custom">Visit Mind.org.uk</a>
-                                <a href="https://www.nhs.uk/mental-health/" target="_blank" class="btn btn-outline-primary-custom">NHS Services</a>
+                        <div class="p-4 bg-body-tertiary rounded h-100 shadow-sm border border-success border-opacity-25 card d-flex flex-column justify-content-center">
+                            <div>
+                                <h3 class="h4 text-primary"><i class="fa-solid fa-user-doctor me-2"></i>Professional Help</h3>
+                                <p>Find a therapist or local support group to help you navigate your mental health journey.</p>
+                                <div class="d-grid gap-2 mt-4">
+                                    <a href="https://www.mind.org.uk/" target="_blank" class="btn btn-primary">Visit Mind.org.uk</a>
+                                    <a href="https://www.nhs.uk/mental-health/" target="_blank" class="btn btn-outline-primary">NHS Services</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -267,7 +399,7 @@
                 <a href="#" class="text-white mx-2"><i class="fa-brands fa-instagram fa-lg"></i></a>
                 <a href="#" class="text-white mx-2"><i class="fa-brands fa-facebook fa-lg"></i></a>
             </div>
-            <p class="mb-0 small opacity-75">&copy; 2023 MindSpace Awareness.</p>
+            <p class="mb-0 small opacity-75">&copy; 2025 MindSpace Awareness.</p>
             <p class="small opacity-50 mt-1">Disclaimer: This website does not provide medical advice.</p>
         </div>
     </footer>
@@ -275,10 +407,5 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script>
-        function safeExit() {
-            window.location.replace("https://www.google.com");
-        }
-    </script>
 </body>
 </html>

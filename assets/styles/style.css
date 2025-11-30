@@ -1,68 +1,52 @@
 /* -----------------------------------------------------------
-   GLOBAL VARIABLES & SETTINGS
+   GLOBAL VARIABLES
    Theme: Calming Nature (Sage Green & Slate)
 ----------------------------------------------------------- */
 :root {
-    /* Base Primitives */
-    --base-primary: #4A7C59; /* Sage Green */
-    --base-secondary: #355070; /* Slate Blue */
-    --base-urgent: #d9534f;
+    /* Brand Colors */
+    --brand-primary: #4A7C59; /* Sage Green */
+    --brand-primary-hover: #437050; 
+    --brand-secondary: #355070; /* Slate Blue */
+    --brand-urgent: #d9534f;
     
-    /* Dynamic Theming */
-    --primary-color: var(--base-primary);
-    --primary-hover: color-mix(in srgb, var(--base-primary), black 10%);
-    --primary-subtle: color-mix(in srgb, var(--base-primary), white 90%);
-    
-    --secondary-color: var(--base-secondary);
-    --urgent-color: var(--base-urgent);
-    
-    /* Text */
-    --text-dark: #2C3E50;
-    --text-light: #ffffff;
-    
-    /* Typography & Layout */
+    /* UI Colors */
+    --text-main: #2C3E50;
+    --text-muted: #6c757d;
+    --bg-body: #f8f9fa;
+    --border-color: rgba(0,0,0,0.1);
+
+    /* Fonts & Layout */
     --font-heading: 'Open Sans', sans-serif;
     --font-body: 'Lato', sans-serif;
     --navbar-height: 76px;
-    
-    /* Light Mode Defaults */
-    --bg-body: #ffffff;
-    --bg-card: #ffffff;
-    --bg-section-alt: var(--primary-subtle);
-    --text-main: #2C3E50;
-    --text-muted: #6c757d;
-    --glass-bg: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.3);
 }
 
-/* Dark Mode Overrides */
+/* Dark Mode - System Preference */
 @media (prefers-color-scheme: dark) {
     :root {
-        --primary-color: color-mix(in srgb, var(--base-primary), white 20%);
-        --primary-hover: color-mix(in srgb, var(--base-primary), white 30%);
-        --primary-subtle: color-mix(in srgb, var(--base-primary), black 80%);
+        --brand-primary: #6E967A; 
+        --brand-primary-hover: #80A38B; 
+        --brand-secondary: #a4b6cf;
+        --brand-urgent: #ff6b6b;
         
-        --secondary-color: #a4b6cf;
-        --urgent-color: #ff6b6b;
-        
-        --bg-body: #121212;
-        --bg-card: #1e1e1e;
-        --bg-section-alt: #181818;
         --text-main: #e0e0e0;
         --text-muted: #b0b0b0;
-        --glass-bg: rgba(30, 30, 30, 0.85);
-        --glass-border: rgba(255, 255, 255, 0.1);
+        --bg-body: #121212;
+        --border-color: rgba(255,255,255,0.1);
+        
+    }
+
+    /* Fix 2 & 4: Ensure text/headings/links inside cards are readable (light) */
+    .card, .card p, .card ul li, .card span, .card h3 a {
+        color: var(--text-main) !important;
     }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
-    }
-}
-
-section {
-    scroll-margin-top: var(--navbar-height);
+/* -----------------------------------------------------------
+   CORE RESET & TYPOGRAPHY
+----------------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -79,172 +63,283 @@ h1, h2, h3, h4, h5 {
     color: var(--text-main);
 }
 
+h1 { font-size: clamp(2rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.3rem, 3vw, 1.75rem); }
+
+section {
+    scroll-margin-top: var(--navbar-height);
+}
+
 /* -----------------------------------------------------------
-   ACCESSIBILITY & UTILITIES
+   BOOTSTRAP OVERRIDES
 ----------------------------------------------------------- */
+.text-primary { color: var(--brand-primary) !important; }
+.text-muted { color: var(--text-muted) !important; }
+
+.btn-primary {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    background-color: var(--brand-primary-hover) !important;
+    border-color: var(--brand-primary-hover) !important;
+}
+
+.btn-outline-primary {
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+.btn-outline-primary:hover {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+    color: #fff !important; /* FIX 1: Ensure text is white on hover */
+}
+
+/* Dark Mode Overrides - System Preference */
+@media (prefers-color-scheme: dark) {
+    .bg-body-tertiary { background-color: #181818 !important; }
+    .card { background-color: #1e1e1e; border-color: var(--border-color); }
+}
+
+/* Dark Mode Overrides - Bootstrap Attribute (Manual Toggle Support) */
+[data-bs-theme="dark"] .bg-body-tertiary { 
+    background-color: #181818 !important; 
+}
+[data-bs-theme="dark"] .card { 
+    background-color: #1e1e1e; 
+    border-color: var(--border-color); 
+}
+
+/* Fix 2 & 4 (Manual toggle safety) */
+[data-bs-theme="dark"] .card, 
+[data-bs-theme="dark"] .card p, 
+[data-bs-theme="dark"] .card ul li, 
+[data-bs-theme="dark"] .card span,
+[data-bs-theme="dark"] .card h3 a {
+    color: var(--text-main) !important;
+}
+
+
+/* -----------------------------------------------------------
+   COMPONENTS
+----------------------------------------------------------- */
+/* Navigation */
+.glass-effect {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-link {
+    color: var(--text-main);
+    transition: color 0.3s;
+    position: relative; 
+    padding-bottom: 8px; 
+}
+
+.nav-link:hover { color: var(--brand-primary); }
+
+.nav-link:not(.btn)::after { 
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--brand-primary);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-link:not(.btn):hover::after {
+    transform: scaleX(1);
+}
+
+
+/* Floating Buttons */
 .skip-link {
     position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--primary-color);
-    color: var(--bg-body);
+    top: -40px; left: 0;
+    background: var(--brand-primary);
+    color: #fff;
     padding: 8px;
     z-index: 2000;
     transition: top 0.3s;
 }
+.skip-link:focus { top: 0; }
 
-.skip-link:focus {
-    top: 0;
-}
-
-:focus {
-    outline: 3px solid var(--secondary-color);
-    outline-offset: 2px;
-}
-
-/* Quick Exit Button */
-.quick-exit-btn {
+.fab-btn {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
     z-index: 1050;
-    background-color: var(--urgent-color);
-    color: white;
-    font-weight: bold;
     border-radius: 50px;
-    padding: 10px 20px;
+    padding: 10px 24px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: transform 0.2s, background-color 0.2s;
-    text-decoration: none;
     border: 2px solid white;
-    cursor: pointer;
-}
-
-.quick-exit-btn:hover {
-    background-color: color-mix(in srgb, var(--urgent-color), black 10%);
-    transform: scale(1.05);
-    color: white;
-}
-
-/* 
-   Improvement #2 Refinement: Explicit Crisis Button
-   Changed from round icon-only to pill shape with text label.
-   Background is now Friendly Green (Primary) instead of Slate.
-*/
-.crisis-fab {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1050;
-    background-color: var(--primary-color); /* Friendly Green */
-    color: white;
-    
-    /* Layout */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* Space between icon and text */
-    
-    /* Sizing */
-    padding: 12px 24px;
-    width: auto;
-    height: auto;
-    border-radius: 50px; /* Pill Shape */
-    
-    /* Visuals */
+    text-decoration: none;
     font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    text-decoration: none;
-    border: 2px solid white;
-    transition: transform 0.2s, background-color 0.2s;
-}
-
-.crisis-fab:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-2px); /* Slight lift */
+    transition: transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     color: white;
 }
 
-.crisis-fab:focus {
-    outline: 3px solid var(--urgent-color);
+.fab-btn:hover { transform: scale(1.05); color: white; }
+
+#btn-quick-exit { bottom: 20px; right: 20px; background-color: var(--brand-urgent); }
+.crisis-fab { bottom: 20px; left: 20px; background-color: var(--brand-primary); }
+
+/* Cards & Interactives */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
 }
 
-/* -----------------------------------------------------------
-   CONTAINER QUERIES
------------------------------------------------------------ */
-.responsive-card-wrapper {
-    container-type: inline-size;
-    container-name: card-wrapper;
-    height: 100%;
-}
-
-@container card-wrapper (max-width: 350px) {
-    .card-custom .card-body {
-        padding: 1rem !important;
-    }
-    
-    .card-custom h3 {
-        font-size: 1.1rem;
-    }
-    
-    .card-custom .icon-wrapper i {
-        font-size: 2em;
-    }
-}
-
-/* -----------------------------------------------------------
-   THEME CLASSES
------------------------------------------------------------ */
-.text-primary-custom { color: var(--primary-color) !important; }
-.bg-primary-custom { background-color: var(--primary-color) !important; }
-.bg-light-custom { background-color: var(--bg-section-alt) !important; }
-
-.card-custom {
-    background-color: var(--bg-card) !important;
+.section-header-link {
+    text-decoration: none;
     color: var(--text-main);
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.3s ease;
+}
+.section-header-link:hover { color: var(--brand-primary); }
+
+/* Custom Details/Summary */
+details > summary {
+    list-style: none;
+    cursor: pointer;
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s;
+}
+details > summary::-webkit-details-marker { display: none; }
+
+details[open] > summary {
+    background-color: var(--bg-body-tertiary);
+    color: var(--brand-primary);
+    border-bottom-color: transparent;
 }
 
-.text-muted-custom {
-    color: var(--text-muted) !important;
+details[open] > summary .fa-chevron-down { transform: rotate(180deg); }
+.transition-icon { transition: transform 0.3s ease; }
+
+.details-content {
+    border: 1px solid var(--border-color);
+    border-top: none;
+    padding: 1.25rem;
+    animation: slideDown 0.3s ease-out;
 }
 
-/* Glassmorphism */
-.glass-effect {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.glass-dark-effect {
-    background-color: rgba(44, 62, 80, 0.75); 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.1);
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* -----------------------------------------------------------
-   HERO & COMPONENTS
+   HERO SECTION & ANIMATIONS
 ----------------------------------------------------------- */
-.hero-image-wrapper {
+.hero-wrapper {
     position: relative;
     overflow: hidden;
-    background-color: #000; 
+    height: 65vh; 
+    min-height: 450px;
 }
 
-.hero-img {
-    object-fit: cover;
-    min-height: 500px; 
-    opacity: 0.9;
+.hero-title {
+   position: absolute;
+   top: 2rem; left: 2rem;
+   z-index: 30;
+   animation: fadeUp 1s ease-out forwards;
 }
 
-.hero-overlay {
+.hero-overlay-gradient {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    z-index: 2;
+}
+
+/* Breathing Orbs */
+.hero-orb-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.hero-circle, .breathing-circle {
+    border-radius: 50%;
+    animation: breathe-cycle 19s ease-in-out infinite;
+}
+
+.hero-circle {
+    position: absolute;
+    mix-blend-mode: screen; 
+}
+.hero-orb-cluster { position: relative; width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; }
+
+/* Breathing Circle Widget (Strategies Section) */
+.breathing-circle {
+    width: 120px; height: 120px;
+    background-color: var(--brand-primary);
+    opacity: 0.6;
+    box-shadow: 0 0 20px rgba(74, 124, 89, 0.3);
+}
+
+.layer-1 { width: 220px; height: 220px; background-color: rgba(0, 69, 219, 0.4); }
+.layer-2 { width: 180px; height: 180px; background-color: rgba(37, 110, 199, 0.4); animation-delay: 0.2s; }
+.layer-3 { width: 140px; height: 140px; background-color: rgba(255, 230, 0, 0.2); animation-delay: 0.4s; }
+
+@keyframes breathe-cycle {
+    0% { transform: scale(1); opacity: 0.4; }
+    21% { transform: scale(1.6); opacity: 0.9; } /* Inhale */
+    22% { transform: scale(1.6); opacity: 0.9; } /* Hold */
+    58% { transform: scale(1.6); opacity: 0.9; } /* Hold */
+    100% { transform: scale(1); opacity: 0.4; } /* Exhale */
+}
+
+/* Breathing Text */
+.hero-breathing-text {
+    position: absolute;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    top: 50%; 
+    z-index: 20;
+}
+
+.hero-breathing-text::after, .breathing-text::after {
+    content: "Prepare...";
+    animation: breathe-text 19s linear infinite;
+}
+
+@keyframes breathe-text {
+    0%, 20% { content: "Inhale (4s)"; }
+    21%, 58% { content: "Hold (7s)"; }
+    59%, 100% { content: "Exhale (8s)"; }
+}
+
+.glass-hero-card {
+    position: absolute;
+    bottom: 2rem; right: 5%;
+    z-index: 30;
+    max-width: 420px;
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    animation: fadeUp 1s ease-out forwards;
 }
 
 @keyframes fadeUp {
@@ -252,86 +347,18 @@ h1, h2, h3, h4, h5 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .fade-in-up { animation: fadeUp 1s ease-out forwards; }
-    .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .hover-lift:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+/* -----------------------------------------------------------
+   ACCESSIBILITY: REDUCED MOTION
+----------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    .hero-circle, .breathing-circle, .hover-lift:hover {
+        animation: none !important; transform: none !important; transition: none !important;
     }
-    .transition-icon { transition: transform 0.3s ease; }
-}
-
-details > summary {
-    list-style: none;
-    cursor: pointer;
-}
-summary::-webkit-details-marker { display: none; }
-
-details[open] summary .transition-icon {
-    transform: rotate(180deg);
-}
-
-.accordion-content {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease-out;
-}
-
-details[open] .accordion-content {
-    grid-template-rows: 1fr;
-}
-
-.accordion-content > div {
-    overflow: hidden;
-}
-
-.btn-outline-primary-custom {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-.btn-outline-primary-custom:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-.btn-primary-custom {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
-}
-.btn-primary-custom:hover {
-    background-color: var(--primary-hover);
-    color: white;
-}
-
-.carousel-indicators [data-bs-target] {
-    background-color: var(--primary-color);
-}
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    background-size: 60%;
+    .hero-breathing-text::after { content: "Inhale... Exhale..."; animation: none; }
 }
 
 @media print {
-    header, footer, .quick-exit-btn, .crisis-fab, .hero-image-wrapper {
-        display: none !important;
-    }
-    body, section, .card, .bg-light-custom {
-        background-color: white !important;
-        color: black !important;
-    }
-    p, h1, h2, h3, h4, h5 {
-        color: black !important;
-    }
-    details .accordion-content {
-        grid-template-rows: 1fr !important;
-        display: block !important;
-    }
-    .accordion-content > div {
-        overflow: visible !important;
-    }
-    @page { margin: 2cm; }
+    header, footer, .fab-btn, .hero-wrapper { display: none !important; }
+    body, section, .card { background: white !important; color: black !important; border: 1px solid #ddd; }
 }
