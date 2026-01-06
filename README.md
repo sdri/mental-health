@@ -1,5 +1,9 @@
 # MindSpace - Mental Health Awareness
 
+**Live Demo:** https://sdri.github.io/mental-health/
+
+<br/>
+
 ![Quick Preview](./assets/preview-wide.png)
 
 <div style="display: flex; justify-content: space-around; align-items: flex-start;">
@@ -8,8 +12,6 @@
 </div>
 
 <br/>
-
-**Live Demo:** https://sdri.github.io/mental-health/
 
 ## 1. Project Overview
 
