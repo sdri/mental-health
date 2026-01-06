@@ -36,7 +36,6 @@
         
     }
 
-    /* Fix 2 & 4: Ensure text/headings/links inside cards are readable (light) */
     .card, .card p, .card ul li, .card span, .card h3 a {
         color: var(--text-main) !important;
     }
@@ -93,7 +92,7 @@ section {
 .btn-outline-primary:hover {
     background-color: var(--brand-primary);
     border-color: var(--brand-primary);
-    color: #fff !important; /* FIX 1: Ensure text is white on hover */
+    color: #fff !important;
 }
 
 /* Dark Mode Overrides - System Preference */
@@ -111,7 +110,6 @@ section {
     border-color: var(--border-color); 
 }
 
-/* Fix 2 & 4 (Manual toggle safety) */
 [data-bs-theme="dark"] .card, 
 [data-bs-theme="dark"] .card p, 
 [data-bs-theme="dark"] .card ul li, 
