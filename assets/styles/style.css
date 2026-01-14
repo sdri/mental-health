@@ -371,7 +371,11 @@ details[open] > summary .fa-chevron-down { transform: rotate(180deg); }
     overflow: hidden;
     border: 1px solid var(--border-color); 
     border-left: 0; border-right: 0;
-    background: var(--bg-body);
+    background: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    .split-visual-section { background-color: rgba(18, 18, 18, 0.85); }
 }
 
 .tool-text-card {
