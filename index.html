@@ -27,7 +27,8 @@
 
     <!-- Safety: History-safe Exit -->
     <a href="https://www.google.com" id="btn-quick-exit" class="fab-btn" aria-label="Quick Exit to Google immediately">
-        <i class="fa-solid fa-person-running"></i> Quick Exit
+        <i class="fa-solid fa-person-running"></i> 
+        <span>Quick Exit</span>
     </a>
 
     <!-- Crisis Button -->
@@ -36,8 +37,8 @@
         <span>Get Support</span>
     </a>
 
-    <header>
-        <nav class="navbar navbar-expand-lg sticky-top shadow-sm glass-effect">
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg shadow-sm glass-effect">
             <div class="container">
                 <a class="navbar-brand fw-bold text-primary" href="#">
                     <i class="fa-solid fa-seedling"></i> MindSpace
@@ -48,9 +49,9 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tools">Tools</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signs">Signs</a></li>
                         <li class="nav-item"><a class="nav-link" href="#reminders">Reminders</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#strategies">Strategies</a></li>
                         <li class="nav-item"><a class="nav-link btn btn-outline-primary ms-2 px-3" href="#resources">Get Help</a></li>
                     </ul>
                 </div>
@@ -59,61 +60,93 @@
     </header>
 
     <main id="main-content">
-        
-        <section id="hero" class="position-relative text-white mb-1">
-            <div class="hero-wrapper">
-                <div class="hero-overlay-gradient"></div>
 
-                <h2 class="hero-title">
-                        Mental Health Matters
-                </h2>
+        <!-- 1. HERO: Fire Animation -->
+        <section id="hero">
+            <div class="hero-overlay-text">
+                <h1 class="fw-bold mb-3 display-3">Mental Health Matters</h1>
+                <p class="h4 fw-light opacity-75 letter-spacing-2 text-uppercase">Find Your Inner Warmth</p>
+            </div>
 
-                <div class="hero-orb-grid">
-                    <div class="hero-orb-cluster d-none d-lg-flex">
-                        <div class="hero-circle layer-1"></div>
-                        <div class="hero-circle layer-2"></div>
-                        <div class="hero-circle layer-3"></div>
+            <div class="fire-stage">
+                <div class="fire-container">
+                    <div class="fire-group fire-red">
+                        <div class="flame"></div><div class="flame"></div><div class="flame"></div><div class="flame"></div><div class="flame"></div>
                     </div>
-                    <div class="hero-orb-cluster">
-                        <div class="hero-circle layer-1"></div>
-                        <div class="hero-circle layer-2"></div>
-                        <div class="hero-circle layer-3"></div>
+                    <div class="fire-group fire-orange">
+                        <div class="flame"></div><div class="flame"></div><div class="flame"></div><div class="flame"></div><div class="flame"></div>
                     </div>
-                   <div class="hero-orb-cluster d-none d-lg-flex">
-                        <div class="hero-circle layer-1"></div>
-                        <div class="hero-circle layer-2"></div>
-                        <div class="hero-circle layer-3"></div>
+                    <div class="fire-group fire-yellow">
+                        <div class="flame"></div><div class="flame"></div><div class="flame"></div><div class="flame"></div><div class="flame"></div>
                     </div>
-                    <div class="hero-orb-cluster d-none d-lg-flex">
-                        <div class="hero-circle layer-1"></div>
-                        <div class="hero-circle layer-2"></div>
-                        <div class="hero-circle layer-3"></div>
-                    </div>
-                     <div class="hero-orb-cluster d-none d-lg-flex">
-                        <div class="hero-circle layer-1"></div>
-                        <div class="hero-circle layer-2"></div>
-                        <div class="hero-circle layer-3"></div>
+                    <div class="fire-group fire-white">
+                        <div class="flame"></div><div class="flame"></div><div class="flame"></div><div class="flame"></div><div class="flame"></div>
                     </div>
                 </div>
-
-                <div class="hero-breathing-text"></div>
-
-                <div class="glass-hero-card p-3 rounded shadow-lg d-flex gap-3 align-items-center text-white">
-                    <div>
-                        <h1 class="h4 fw-bold mb-1">You are not alone</h1>
-                        <p class="mb-0 small">Take a moment to breathe with the circles.</p>
-                    </div>
-                    <div class="d-flex flex-column gap-2 flex-shrink-0">
-                        <a href="#resources" class="btn btn-light btn-sm fw-bold text-primary">Find Support</a>
-                        <a href="#signs" class="btn btn-outline-light btn-sm">Check Signs</a>
-                    </div>
-                </div>
-
             </div>
         </section>
 
+        <!-- 2. SPLIT SECTION: Breathing & Journey -->
+        <section id="tools" class="split-visual-section py-5">
+            <div class="container-fluid p-0">
+                <div class="row g-0">
+                    
+                    <!-- LEFT COL: Breathing -->
+                    <div class="col-md-6 visual-col col-divider">
+                        
+                        <div class="tool-text-card">
+                            <span class="kicker">Learn Techniques</span>
+                            <h3 class="fw-bold mb-3 text-ble">Box Breathing</h3>
+                            <p class="mb-0 text-muted">
+                                Regulate your reset your nervous system instantly using the 4-7-8 box breathing technique below.
+                            </p>
+                        </div>
+                        
+                        <div class="orb-container mt-2">
+                            <div class="hero-circle layer-1"></div>
+                            <div class="hero-circle layer-2"></div>
+                            <div class="hero-circle layer-3"></div>
+                        </div>
 
-        <section id="signs" class="py-3 bg-body-tertiary">
+                        <div class="breathing-caption fs-5 mt-2" aria-live="polite"></div>
+                    </div>
+
+                    <!-- RIGHT COL: Journey/Train -->
+                    <div class="col-md-6 visual-col">
+                        
+                        <div class="tool-text-card">
+                            <span class="kicker">Discover Perspectives</span>
+                            <h3 class="fw-bold mb-3 text-bue">Your Journey</h3>
+                            <p class="mb-0 text-muted">
+                                Recovery isn't a straight line. It has ups and downs. Keep moving forward.
+                            </p>
+                        </div>
+
+                        <div class="train-track-container w-100 mt-4">
+                            
+                            <!-- Visual Track SVG: Sine Wave representing Ups and Downs -->
+                            <svg class="track-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                                <path d="M -10 50 Q 25 10, 50 50 T 110 50" 
+                                      fill="none" 
+                                      stroke="currentColor" 
+                                      stroke-width="2" 
+                                      stroke-dasharray="5,5" 
+                                      vector-effect="non-scaling-stroke" />
+                            </svg>
+
+                            <!-- Train -->
+                            <div class="train-wrapper text-primary">
+                                <i class="fa-solid fa-train-subway"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="signs" class="py-5">
             <div class="container">
                 <div class="text-center mb-5">
                     <div class="w-100">
@@ -134,7 +167,7 @@
                                     <i class="fa-solid fa-heart-pulse fa-3x"></i>
                                 </div>
                                 <h3 class="card-title h4 d-block fw-bold text-body">
-                                    <a href="/symptoms/physical" class="text-decoration-none text-reset stretched-link">Physical</a>
+                                    <a href="#" class="text-decoration-none text-reset stretched-link">Physical</a>
                                 </h3>
                                 <span class="card-text d-block text-muted">Headaches, muscle tension, fatigue, or changes in sleep patterns.</span>
                             </div>
@@ -148,7 +181,7 @@
                                     <i class="fa-solid fa-cloud-rain fa-3x"></i>
                                 </div>
                                 <h3 class="card-title h4 d-block fw-bold text-body">
-                                    <a href="/symptoms/emotional" class="text-decoration-none text-reset stretched-link">Emotional</a>
+                                    <a href="#" class="text-decoration-none text-reset stretched-link">Emotional</a>
                                 </h3>
                                 <span class="card-text d-block text-muted">Feeling overwhelmed, irritable, anxious, or lacking motivation.</span>
                             </div>
@@ -162,7 +195,7 @@
                                     <i class="fa-solid fa-user-clock fa-3x"></i>
                                 </div>
                                 <h3 class="card-title h4 d-block fw-bold text-body">
-                                    <a href="/symptoms/behavioral" class="text-decoration-none text-reset stretched-link">Behavioral</a>
+                                    <a href="#" class="text-decoration-none text-reset stretched-link">Behavioral</a>
                                 </h3>
                                 <span class="card-text d-block text-muted">Withdrawing from friends, changes in appetite, or difficulty concentrating.</span>
                             </div>
@@ -172,9 +205,9 @@
             </div>
         </section>
 
-        <section id="reminders" class="py-5">
+        <section id="reminders" class="py-5 bg-body-tertiary">
             <div class="container">
-                <div class="row gx-5">
+                <div class="row">
                     <div class="col-lg-6">
                         <div class="mb-4">
                             <h2 class="text-primary mb-0 d-inline-block">
@@ -267,7 +300,7 @@
             </div>
         </section>
 
-        <section id="strategies" class="py-5 bg-body-tertiary">
+        <section id="strategies" class="py-5">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-5 mb-4 mb-lg-0">
@@ -309,14 +342,7 @@
                                         <i class="fa-solid fa-chevron-down transition-icon"></i>
                                     </summary>
                                     <div class="details-content rounded-bottom">
-                                        <p class="mb-3">Technique: <strong>Inhale</strong> through your nose for 4 seconds, <strong>Hold</strong> your breath for 7 seconds, and <strong>Exhale</strong> slowly through your mouth for 8 seconds. Follow the visual guide below.</p>
-                                        
-                                        <div class="d-flex justify-content-center align-items-center py-4 bg-body-tertiary rounded" aria-hidden="true">
-                                            <div class="d-flex flex-column align-items-center">
-                                                <div class="breathing-circle"></div>
-                                                <div class="breathing-text fw-bold text-primary mt-2 text-center">Inhale...</div>
-                                            </div>
-                                        </div>
+                                        <p class="mb-3">Technique: <strong>Inhale</strong> through your nose for 4 seconds, <strong>Hold</strong> your breath for 7 seconds, and <strong>Exhale</strong> slowly through your mouth for 8 seconds. See the animation at the top of the page for practice.</p>
                                     </div>
                                 </details>
                             </li>
@@ -351,7 +377,7 @@
             </div>
         </section>
 
-        <section id="resources" class="py-5">
+        <section id="resources" class="py-5 bg-body-tertiary">
             <div class="container">
                 <div class="text-center mb-5">
                     <h2 class="section-title fw-bold">Support Resources</h2>
@@ -375,7 +401,7 @@
 
                     <!-- Professional Support -->
                     <div class="col-md-6">
-                        <div class="p-4 bg-body-tertiary rounded h-100 shadow-sm border border-success border-opacity-25 card d-flex flex-column justify-content-center">
+                        <div class="p-4 rounded h-100 shadow-sm border border-success border-opacity-25 card d-flex flex-column justify-content-center">
                             <div>
                                 <h3 class="h4 text-primary"><i class="fa-solid fa-user-doctor me-2"></i>Professional Help</h3>
                                 <p>Find a therapist or local support group to help you navigate your mental health journey.</p>
@@ -395,11 +421,11 @@
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center">
             <div class="mb-3">
-                <a href="#" class="text-white mx-2"><i class="fa-brands fa-twitter fa-lg"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fa-brands fa-instagram fa-lg"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-white mx-2" aria-label="go to minsdpace twitter profile"><i class="fa-brands fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-white mx-2" aria-label="go to minsdpace instagram profile"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-white mx-2" aria-label="go to minsdpace facebook profile"><i class="fa-brands fa-facebook fa-lg"></i></a>
             </div>
-            <p class="mb-0 small opacity-75">&copy; 2025 MindSpace Awareness.</p>
+            <p class="mb-0 small opacity-75">&copy; 2026 MindSpace Awareness.</p>
             <p class="small opacity-50 mt-1">Disclaimer: This website does not provide medical advice.</p>
         </div>
     </footer>
